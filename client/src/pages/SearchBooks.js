@@ -60,9 +60,9 @@ const SearchBooks = () => {
   
     const bookToSaveFormatted = {
       ...bookToSave,
-      id: bookToSave.bookId,
+      // id: bookToSave.bookId,
     };
-    delete bookToSaveFormatted.bookId;
+    // delete bookToSaveFormatted.bookId;
   
     console.log("Saving book:", bookToSaveFormatted);
   
@@ -76,7 +76,7 @@ const SearchBooks = () => {
   
     try {
       const { data } = await saveBook({
-        variables: { bookData: { ...bookToSaveFormatted } },
+        variables: { bookData: { ...bookToSaveFormatted }, token },
         context: { headers: { authorization: `Bearer ${token}` } }, // Pass token in the context object
       });
   
