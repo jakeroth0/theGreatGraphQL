@@ -33,7 +33,26 @@ const resolvers = {
         const user = await User.create({ username, email, password });
         const token = signToken(user);
         return { token, user };
-      },      
+      },    
+      saveBook: async (parent, { bookData }, context) => {
+        console.log(context); // add this line
+        if (context.user) {
+          const updatedUser = await User.findOneAndUpdate(
+            { _id: context.user._id },
+            { $addToSet: { savedBooks: bookData } },
+            { new: true, runValidators: true }
+          );
+      
+          console.log("Updated user:", updatedUser);
+      
+          return updatedUser;
+        }
+      
+        throw new AuthenticationError('You need to be logged in!');
+      },
+      
+      
+        
   }
 };
 

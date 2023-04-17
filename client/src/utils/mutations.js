@@ -24,3 +24,35 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+export const SAVE_BOOK = gql`
+mutation SaveBook($bookData: BookInput!, $token: String!) {
+    saveBook(bookData: $bookData, token: $token) {
+      id
+      authors
+      title
+      description
+      image
+    }
+  }
+  
+`;
+
+export const REMOVE_BOOK = gql`
+  mutation removeBook($bookId: ID!) {
+    removeBook(bookId: $bookId) {
+      _id
+      username
+      email
+      bookCount
+      savedBooks {
+        bookId
+        authors
+        description
+        title
+        image
+        link
+      }
+    }
+  }
+`;

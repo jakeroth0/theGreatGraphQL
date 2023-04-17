@@ -1,17 +1,6 @@
-import { gql } from 'graphql-tag';
+// import { gql } from 'graphql-tag';
+import { gql } from '@apollo/client';
 
-export const LOGIN_USER = gql`
-  mutation login($email: String!, $password: String!) {
-    login(email: $email, password: $password) {
-      token
-      user {
-        _id
-        username
-        email
-      }
-    }
-  }
-`;
 
 export const GET_ME = gql`
   query me {
@@ -23,17 +12,5 @@ export const GET_ME = gql`
   }
 `;
 
-export const ADD_USER = gql`
-  mutation addUser($username: String!, $email: String!, $password: String!) {
-    addUser(username: $username, email: $email, password: $password) {
-      token
-      user {
-        _id
-        username
-        email
-      }
-    }
-  }
-`;
 
 // other queries and mutations can be added here
