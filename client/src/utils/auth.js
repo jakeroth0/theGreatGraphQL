@@ -29,6 +29,7 @@ class AuthService {
 
   getToken() {
     // Retrieves the user token from localStorage
+    // console.log(localStorage.getItem('id_token')); // Add this line
     return localStorage.getItem('id_token');
   }
 
